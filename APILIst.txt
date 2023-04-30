@@ -1,5 +1,5 @@
 ProductController
-Get Products
+Get Products - Done.
 Add a product
 Get one product
 Rate product.
