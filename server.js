@@ -5,7 +5,7 @@ import productRouter from './src/features/product/product.routes.js';
 const server = express();
 
 // for all requests related to product, redirect to product routes.
-// localhost:3200/api/products
+// localhost:3200/api/productss
 server.use('/api/products', productRouter);
 
 // 3. Default request handler
