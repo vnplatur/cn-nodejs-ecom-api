@@ -1,12 +1,17 @@
 // 1. Import Exprerss
 import express from 'express';
 import productRouter from './src/features/product/product.routes.js';
+import userRouter from './src/features/user/user.routes.js';
+
 // 2. Create Server
 const server = express();
+
+server.use(express.json());
 
 // for all requests related to product, redirect to product routes.
 // localhost:3200/api/productss
 server.use('/api/products', productRouter);
+server.use('/api/users', userRouter);
 
 // 3. Default request handler
 server.get('/', (req, res) => {
