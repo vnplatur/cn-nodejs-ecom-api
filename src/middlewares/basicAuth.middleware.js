@@ -1,5 +1,5 @@
 import bAuth from 'express-basic-auth';
-import UserModel from '../features/user/user.model';
+import UserModel from '../features/user/user.model.js';
 
 const basicAuthorizer = (username, password) => {
   // 1. Get users
@@ -16,11 +16,11 @@ const basicAuthorizer = (username, password) => {
     );
   } else {
     // 4. Return error message
-    return res.status(401).send('Unauthorized');
+    return false;
   }
 };
 
-const authorizer = basicAuth({
+const authorizer = bAuth({
   authorizer: basicAuthorizer,
   challenge: true,
 });

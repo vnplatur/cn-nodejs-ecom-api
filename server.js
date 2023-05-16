@@ -2,7 +2,7 @@
 import express from 'express';
 import productRouter from './src/features/product/product.routes.js';
 import userRouter from './src/features/user/user.routes.js';
-import authorizer from 'src/middlewares/basicAuth.middleware.js';
+import authorizer from './src/middlewares/basicAuth.middleware.js';
 
 // 2. Create Server
 const server = express();
