@@ -2,7 +2,7 @@
 import express from 'express';
 import productRouter from './src/features/product/product.routes.js';
 import userRouter from './src/features/user/user.routes.js';
-import authorizer from './src/middlewares/basicAuth.middleware.js';
+import jwtAuth from './src/middlewares/jwt.middleware.js';
 
 // 2. Create Server
 const server = express();
@@ -13,7 +13,7 @@ server.use(express.json());
 // localhost:3200/api/productss
 server.use(
   '/api/products',
-  authorizer,
+  jwtAuth,
   productRouter
 );
 server.use('/api/users', userRouter);
