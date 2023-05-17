@@ -40,4 +40,11 @@ var users = [
     password: 'Password1',
     type: 'seller',
   },
+  {
+    id: 2,
+    name: 'Customer User',
+    email: 'customer@ecom.com',
+    password: 'Password1',
+    type: 'customer',
+  },
 ];
