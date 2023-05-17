@@ -7,4 +7,10 @@ export class CartItemsController {
     CartIemModel.add(productID, userID, quantity);
     res.status(201).send('Cart is updated');
   }
+
+  get(req, res) {
+    const userID = req.userID;
+    const items = CartIemModel.get(userID);
+    return res.status(200).send(items);
+  }
 }
