@@ -3,7 +3,7 @@ Get Products - Done.
 Add a product - Done.
 Get one product - Done.
 Filter Product - Done.
-Rate product.
+Rate product. - Done.
 Add items to Cart
 Get items of cart
 Remove items from cart.
