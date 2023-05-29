@@ -1,0 +1,70 @@
+{
+    "swagger":"3.1.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "E-commerce App API",
+        "description": "API documentation for our E-commerce app"
+      },
+      "host": "localhost:3200",
+      "basePath": "/api",
+      "securityDefinitions": {
+        "JWT": {
+          "type": "apiKey",
+          "name": "Authorization",
+          "in": "header"
+        }
+      },
+      "paths": {
+        "/products":{
+            "get":{
+                "tags": ["Products"],
+                "summary":"Get Products",
+                "description": "Get All Products",
+                "security": [
+                    {
+                      "JWT": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                      "description": "OK"
+                    }
+                  }
+            }
+        },
+        "/users/signin":{
+            "post":{
+                "tags": ["Users"],
+                "summary":"Login",
+                "description": "User login to get token",
+                "parameters": [
+                    {
+                      "in": "body",
+                      "name": "body",
+                      "description": "User credentials",
+                      "required": true,
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "email": {
+                            "type": "string"
+                          },
+                          "password": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  ],
+                "responses": {
+                    "200": {
+                      "description": "OK"
+                    },
+                    "400": {
+                        "description": "Incorrect credentials"
+                      }
+                  }
+            }
+        }
+      }
+}

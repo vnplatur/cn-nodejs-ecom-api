@@ -4,10 +4,19 @@ import productRouter from './src/features/product/product.routes.js';
 import userRouter from './src/features/user/user.routes.js';
 import jwtAuth from './src/middlewares/jwt.middleware.js';
 import cartRouter from './src/features/cartItems/cartItems.routes.js';
+import swagger from "swagger-ui-express";
+import doc from "./swagger.json" assert {type:'json'};
+import cors from "cors";
 
 // 2. Create Server
 const server = express();
+server.use(cors({
+  origin: 'http://localhost:5500',
+  methods: 'HEAD,PUT,PATCH,POST,DELETE',
+}));
 
+
+server.use("/api-docs", swagger.serve,swagger.setup(doc));
 server.use(express.json());
 
 // for all requests related to product, redirect to product routes.
