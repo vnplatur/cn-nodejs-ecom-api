@@ -56,7 +56,7 @@ export default class ProductModel {
       (u) => u.id == userID
     );
     if (!user) {
-      return 'User not found';
+      throw new Error('User not found');
     }
 
     // Validate Product
@@ -64,7 +64,7 @@ export default class ProductModel {
       (p) => p.id == productID
     );
     if (!product) {
-      return 'Product not found';
+      throw new Error('Product not found');
     }
 
     // 2. Check if there are any ratings and if not then add ratings array.
