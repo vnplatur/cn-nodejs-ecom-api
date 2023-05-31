@@ -14,7 +14,8 @@ const server = express();
 // CORS policy configuration
 server.use((req, res, next)=>{
   res.header('Access-Control-Allow-Origin', 'http://localhost:5500');
-  res.header('Access-Control-Allow-Headers', '*')
+  res.header('Access-Control-Allow-Headers', '*');
+  res.header('Access-Control-Allow-Methods', '*');
   // return ok for preflight request.
   if(req.method=="OPTIONS"){
     return res.sendStatus(200);
