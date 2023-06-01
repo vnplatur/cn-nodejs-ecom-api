@@ -56,6 +56,7 @@ export default class ProductModel {
       (u) => u.id == userID
     );
     if (!user) {
+      // user-defined error.
       throw new Error('User not found');
     }
 
@@ -76,9 +77,10 @@ export default class ProductModel {
       });
     } else {
       // 3. check if user rating is already available.
-      const existingRatingIndex = product.ratings.findIndex(
-        (r) => r.userID == userID
-      );
+      const existingRatingIndex =
+        product.ratings.findIndex(
+          (r) => r.userID == userID
+        );
       if (existingRatingIndex >= 0) {
         product.ratings[existingRatingIndex] = {
           userID: userID,
