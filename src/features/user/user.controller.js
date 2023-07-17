@@ -8,7 +8,7 @@ export default class UserController {
       password,
       type,
     } = req.body;
-    const user = UserModel.SignUp(
+    const user = UserModel.signUp(
       name,
       email,
       password,
@@ -18,7 +18,7 @@ export default class UserController {
   }
 
   signIn(req, res) {
-    const result = UserModel.SignIn(
+    const result = UserModel.signIn(
       req.body.email,
       req.body.password
     );
