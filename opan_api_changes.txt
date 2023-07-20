@@ -1,0 +1,7 @@
+In OpenAPI 3.0:
+
+"swagger" has been changed to "openapi" and the version number updated.
+"host", has been replaced by the "servers" section.
+"securityDefinitions" is replaced with "components/securitySchemes".
+The "parameters" section has been replaced by "requestBody" in HTTP methods (like post, put, etc.)
+The "consumes" and "produces" fields have been replaced with "content".

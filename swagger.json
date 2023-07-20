@@ -5,14 +5,12 @@
     "description": "API for E-commerce application",
     "title": "E-commerce API"
   },
-  "host": "localhost:3200",
-  "securityDefinitions": {
-    "JWT": {
-      "in": "header",
-      "name": "Authorization",
-      "type": "apiKey"
+  "servers":[
+    {
+      "url":"localhost:3200"
     }
-  },
+  ]
+  ,
   "paths": {
     "/api/products": {
       "get": {
@@ -35,10 +33,8 @@
         "tags": ["Users"],
         "summary": "Login",
         "description": "User login to get token",
-        "parameters": [
+        "requestBody": [
           {
-            "in": "body",
-            "name": "body",
             "description": "User Credentials",
             "schema": {
               "type": "object",
@@ -61,6 +57,15 @@
             "description": "Incorrect Credentials"
           }
         }
+      }
+    }
+  },
+  "components":{
+    "securitySchemes": {
+      "JWT": {
+        "in": "header",
+        "name": "Authorization",
+        "type": "apiKey"
       }
     }
   }
