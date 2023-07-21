@@ -19,11 +19,12 @@ export default class ProductController {
     res.status(201).send(createdRecord);
   }
 
-  rateProduct(req, res) {
+  rateProduct(req, res, next) {
     console.log(req.query);
+    try{
     const userID = req.query.userID;
     const productID = req.query.productID;
-    const rating = req.query.rating;
+    const rating = req.querys.rating;
     ProductModel.rateProduct(
       userID,
       productID,
@@ -32,7 +33,12 @@ export default class ProductController {
     return res
       .status(200)
       .send('Rating has been added');
-  }
+  
+    }catch(err){
+      console.log("Passing error to middleware");
+      next(err);
+    }
+    }
 
   getOneProduct(req, res) {
     const id = req.params.id;
