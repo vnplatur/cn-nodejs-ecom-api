@@ -13,6 +13,12 @@ class UserRepository{
         return newUser;
     }
 
+    async findByEmail(email){
+        const db = getDB();
+        const collection = db.collection("users");
+        return await collection.findOne({email});
+    }
+
     async signIn(email, password){
         const db = getDB();
         const collection = db.collection("users");
