@@ -1,21 +1,28 @@
+import { getDB } from "../../config/mongodb.js";
+
 export default class UserModel {
   constructor(name, email, password, type, id) {
     this.name = name;
     this.email = email;
     this.password = password;
     this.type = type;
-    this.id = id;
+    this._id = id;
   }
 
   static signUp(name, email, password, type) {
+    // 1. Access database
+    const db = getDB();
+    // 2. Get collection
+    const collection = db.collection("users");
+
     const newUser = new UserModel(
       name,
       email,
       password,
       type
     );
-    newUser.id = users.length + 1;
-    users.push(newUser);
+    // 3. Call insertOne function
+    collection.insertOne(newUser);
     return newUser;
   }
 
