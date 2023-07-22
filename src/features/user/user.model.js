@@ -9,23 +9,6 @@ export default class UserModel {
     this._id = id;
   }
 
-  static signUp(name, email, password, type) {
-    // 1. Access database
-    const db = getDB();
-    // 2. Get collection
-    const collection = db.collection("users");
-
-    const newUser = new UserModel(
-      name,
-      email,
-      password,
-      type
-    );
-    // 3. Call insertOne function
-    collection.insertOne(newUser);
-    return newUser;
-  }
-
   static signIn(email, password) {
     const user = users.find(
       (u) =>

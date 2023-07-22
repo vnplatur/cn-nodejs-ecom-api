@@ -27,3 +27,5 @@
  Fri Jul 21 2023 12:45:58 GMT+0530 (India Standard Time) - /api/products/rate?userID=1&productID=1&ating=3 - {}
  Sat Jul 22 2023 13:01:54 GMT+0530 (India Standard Time) - /api/users/signup - {"email":"customer@ecom.com","password":"Password1","name":"Customer User","type":"customer"}
  Sat Jul 22 2023 13:03:18 GMT+0530 (India Standard Time) - /api/users/signup - {"email":"seller@ecom.com","password":"Password1","name":"Seller User","type":"seller"}
+ Sat Jul 22 2023 13:35:17 GMT+0530 (India Standard Time) - /api/users/signup - {"email":"seller2@ecom.com","password":"Password1","name":"Seller User 2","type":"seller"}
+ Sat Jul 22 2023 13:36:26 GMT+0530 (India Standard Time) - /api/users/signup - {"email":"seller2@ecom.com","password":"Password1","name":"Seller User 2","type":"seller"}
