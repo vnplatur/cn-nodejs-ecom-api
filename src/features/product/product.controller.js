@@ -69,15 +69,20 @@ export default class ProductController {
   }
 }
 
-  filterProducts(req, res) {
+  async filterProducts(req, res) {
+    try{  
     const minPrice = req.query.minPrice;
     const maxPrice = req.query.maxPrice;
     const category = req.query.category;
-    const result = ProductModel.filter(
+    const result = await this.productRepository.filter(
       minPrice,
       maxPrice,
       category
     );
     res.status(200).send(result);
+  }catch(err){
+    console.log(err);
+    return res.status(200).send("Something went wrong");
+  }
   }
 }
