@@ -67,6 +67,21 @@ class ProductRepository{
             throw new ApplicationError("Something went wrong with database", 500);    
         }
     }
+
+    rate(userID, productID, rating){
+        try{
+            const db = getDB();
+            const collection = db.collection(this.collection); 
+            collection.updateOne({
+                _id:new ObjectId(productID)
+            },{
+                $push:{ratings:{userID:new ObjectId(userID), rating}}
+            })
+        }catch(err){
+            console.log(err);
+            throw new ApplicationError("Something went wrong with database", 500);    
+        }
+    }
 }
 
 export default ProductRepository;

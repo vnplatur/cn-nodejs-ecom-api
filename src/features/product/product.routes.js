@@ -16,8 +16,8 @@ const productController = new ProductController();
 // localhost:4100/api/products/filter?minPrice=10&maxPrice=20&category=Category1
 productRouter.post(
   '/rate',
-  (req, res)=>{
-    productController.rateProduct(req, res)
+  (req, res, next)=>{
+    productController.rateProduct(req, res, next)
 } 
 );
 productRouter.get(

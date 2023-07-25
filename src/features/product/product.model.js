@@ -37,20 +37,6 @@ export default class ProductModel {
     return products;
   }
 
-  static filter(minPrice, maxPrice, category) {
-    const result = products.filter((product) => {
-      return (
-        (!minPrice ||
-          product.price >= minPrice) &&
-        (!maxPrice ||
-          product.price <= maxPrice) &&
-        (!category ||
-          product.category == category)
-      );
-    });
-    return result;
-  }
-
   static rateProduct(userID, productID, rating) {
     // 1. Validate user and product
     const user = UserModel.getAll().find(
