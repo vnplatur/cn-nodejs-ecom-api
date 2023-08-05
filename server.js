@@ -67,7 +67,7 @@ server.get('/', (req, res) => {
 server.use((err, req, res, next) => {
   console.log(err);
   if (err instanceof ApplicationError) {
-    res.status(err.code).send(err.message);
+    return res.status(err.code).send(err.message);
   }
 
   // server errors.
