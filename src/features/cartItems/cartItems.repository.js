@@ -5,22 +5,26 @@ import { getDB } from "../../config/mongodb.js";
 export default class CartItemsRepository{
 
     constructor(){
-        this.collection = "cartItmes";
+        this.collection = "cartItems";
     }
     
     async add(productID, userID, quantity){
         try{
             const db = getDB();
             const collection = db.collection(this.collection)
+            const id = await this.getNextCounter(db);
             // find the document
             // either insert or update
             // Insertion.
             await collection.updateOne(
                 {productID:new ObjectId(productID), userID:new ObjectId(userID)},
-                {$inc:{
+                {
+                    $setOnInsert: {_id:id},
+                    $inc:{
                     quantity: quantity
                 }},
                 {upsert: true})
+
         }catch(err){
             console.log(err);
             throw new ApplicationError("Something went wrong with database", 500);    
@@ -48,5 +52,16 @@ export default class CartItemsRepository{
             console.log(err);
             throw new ApplicationError("Something went wrong with database", 500);    
         }
+    }
+
+    async getNextCounter(db){
+
+        const resultDocument = await db.collection("counters").findOneAndUpdate(
+            {_id:'cartItemId'},
+            {$inc:{value: 1}},
+            {returnDocument:'after'}
+        )  
+        console.log(resultDocument);
+        return resultDocument.value.value;
     }
 }
