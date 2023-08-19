@@ -1,13 +1,10 @@
-Place Order feature.
+Place Order.
 
+1. Get cart items of user, calulcate the totalAmount.
+2. Create a record for order.
+3. Reduce the stock(products quantity).
+4. Clear the cart.
 
-Operations:
-
-1. Get user's cart items and total cost of the cart.
-2. Create an order record.
-3. Reduce the stock (quantity of products)
-4. Clear the cart for user.
-
-
-5. Send email to seller.
-6. Send info to courier team.
+5. Deduct the payment.
+6. Inform to sellers.
+7. Inform to coureir.
