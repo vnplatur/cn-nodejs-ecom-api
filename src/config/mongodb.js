@@ -21,6 +21,10 @@ export const connectToMongoDB = ()=>{
         })
 }
 
+export const getClient = ()=>{
+    return client;
+}
+
 export const getDB = ()=>{
     return client.db();
 }
