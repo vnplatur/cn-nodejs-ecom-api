@@ -8,3 +8,7 @@ Place Order.
 5. Deduct the payment.
 6. Inform to sellers.
 7. Inform to coureir.
+
+270000
+264000
+=534000
