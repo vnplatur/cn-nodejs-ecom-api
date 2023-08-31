@@ -352,3 +352,11 @@
  Thu Aug 31 2023 17:22:01 GMT+0530 (India Standard Time) - /api/users/resetPassword - {"newPassword":"jon@123"}
  Thu Aug 31 2023 17:24:01 GMT+0530 (India Standard Time) - /api/users/resetPassword - {"newPassword":"jon@123"}
  Thu Aug 31 2023 17:25:40 GMT+0530 (India Standard Time) - /api/users/resetPassword - {"newPassword":"jon@123"}
+ Thu Aug 31 2023 18:14:21 GMT+0530 (India Standard Time) - /api/users/signup - {"name":"John Doe","email":"john.doe@gmail.com","password":"jon@123"}
+ Thu Aug 31 2023 18:14:56 GMT+0530 (India Standard Time) - /api/users/signup - {"name":"John Doe","email":"john.doe@gmail.com","password":"jon@123456"}
+ Thu Aug 31 2023 18:17:02 GMT+0530 (India Standard Time) - /api/users/signup - {"name":"John Doe","email":"john.doe@gmail.com","password":"jon@123456"}
+ Thu Aug 31 2023 18:17:24 GMT+0530 (India Standard Time) - /api/users/signup - {"name":"John Doe","email":"john.doe@gmail.com","password":"jon@123456"}
+ Thu Aug 31 2023 18:17:47 GMT+0530 (India Standard Time) - /api/users/signup - {"name":"John Doe","email":"john.doe2@gmail.com","password":"jon@123456"}
+ Thu Aug 31 2023 18:18:04 GMT+0530 (India Standard Time) - /api/users/signup - {"name":"John Doe","email":"john.doe3@gmail.com","password":"jon56"}
+ Thu Aug 31 2023 18:18:23 GMT+0530 (India Standard Time) - /api/users/signup - {"name":"John Doe","email":"john.doe3@gmail.com","password":"jon56"}
+ Thu Aug 31 2023 18:18:43 GMT+0530 (India Standard Time) - /api/users/signup - {"name":"John Doe","email":"john.doe3@gmail.com","password":"jon12424@56"}
