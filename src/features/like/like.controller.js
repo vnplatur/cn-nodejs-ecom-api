@@ -7,6 +7,17 @@ export class LikeController{
         this.likeRepository = new LikeRepository();
     }
 
+    async getLikes(req, res, next){
+        try{
+            const {id, type} = req.query;
+            const likes = await this.likeRepository.getLikes(type, id);
+            return res.status(200).send(likes)
+        }catch(err){
+            console.log(err);
+            return res.status(200).send("Something went wrong");
+          }
+    }
+
     async likeItem(req, res){
         try{
             const {id, type} = req.body;
@@ -22,5 +33,6 @@ export class LikeController{
             console.log(err);
             return res.status(200).send("Something went wrong");
           }
+          res.status(201).send();
     }
 }
