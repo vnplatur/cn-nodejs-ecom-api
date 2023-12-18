@@ -10,10 +10,11 @@ const jwtAuth = (req, res, next) => {
     return res.status(401).send('Unauthorized');
   }
   // 3. check if token is valid.
+  console.log(process.env.JWT_SECRET)
   try {
     const payload = jwt.verify(
       token,
-      'AIb6d35fvJM4O9pXqXQNla2jBCH9kuLz'
+      process.env.JWT_SECRET
     );
     req.userID = payload.userID;
     console.log(payload);

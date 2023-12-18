@@ -68,20 +68,72 @@ class ProductRepository{
         }
     }
 
-    rate(userID, productID, rating){
+    async rate(userID, productID, rating){
         try{
             const db = getDB();
             const collection = db.collection(this.collection); 
-            collection.updateOne({
+            
+            // 1. Pull(remove) existing entry
+            await collection.updateOne({
+                _id: new ObjectId(productID)
+            },
+            {
+                $pull:{
+                    ratings:{userID: new ObjectId(userID)}
+                }
+            }
+            )
+            // 2. Push/Add the rating.
+            await collection.updateOne({
                 _id:new ObjectId(productID)
             },{
                 $push:{ratings:{userID:new ObjectId(userID), rating}}
             })
+            
+
+            
         }catch(err){
             console.log(err);
             throw new ApplicationError("Something went wrong with database", 500);    
         }
     }
 }
+
+
+//     async rate(userID, productID, rating){
+//         try{
+//             const db = getDB();
+//             const collection = db.collection(this.collection); 
+//             // 1. Find the product.
+//             const product = await collection.findOne({_id:new ObjectId(productID)});
+
+//             // 2. Find the rating.
+//             const userrating = product?.ratings?.find(r=> r.userID==userID);
+
+//             // 3. If rating exists, update the rating.
+//             if(userrating){
+//                 await collection.updateOne({
+//                     _id:new ObjectId(productID), "ratings.userID": new ObjectId(userID)
+//                 },{
+//                     $set:{
+//                         "ratings.$.rating":rating
+//                     }
+//                 })
+//             }else{
+//                 // 3. If rating doeasn't exist, add the rating.
+//                 await collection.updateOne({
+//                     _id:new ObjectId(productID)
+//                 },{
+//                     $push:{ratings:{userID:new ObjectId(userID), rating}}
+//                 })
+//             }
+
+            
+//         }catch(err){
+//             console.log(err);
+//             throw new ApplicationError("Something went wrong with database", 500);    
+//         }
+//     }
+// }
 
 export default ProductRepository;
