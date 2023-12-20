@@ -21,12 +21,26 @@ export default class CartItemsRepository{
         }
     }
 
-    async add(productID, userID, quantity){
+    async add(productID, userID, newQuantity){
         try{
         const db = getDB();
         const collection = db.collection(this.collection);
-        await collection.insertOne({productID:new ObjectId(productID), userID: new ObjectId(userID),
-            quantity: quantity});
+
+        // 1. Get the existing quantity for the user and product.
+        // 2. Calculate the new quantity = existingQuantity+quantity
+        // 3. Update the product.
+        // 4. If there is no cart item then add the record.
+        
+        await collection.updateOne(
+            {productID: new ObjectId(productID), userID: new ObjectId(userID)},
+            {
+                $inc:{quantity: newQuantity}
+            },
+            {
+                upsert:true
+            }
+        )
+
         }catch(err){
             console.log(err);
             throw new ApplicationError("Something went wrong with database", 500);   
