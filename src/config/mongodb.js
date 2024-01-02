@@ -14,6 +14,7 @@ export const connectToMongoDB = ()=>{
             client=clientInstance
             console.log("Mongodb is connected");
             await createCounter(client.db())
+            await createIndexes(client.db());
         })
         .catch(err=>{
             console.log(err);
@@ -30,4 +31,18 @@ const createCounter = async(db)=>{
         await db.collection("counters").insertOne({_id:'cartItemId', value:0});
     }
     console.log("Counter verified");
+}
+
+const createIndexes = async(db)=>{
+    try{
+        // 1. Single-field index
+        await db.collection("products").createIndex({name: 1});
+        // 2. Compound Index.
+        await db.collection("products").createIndex({category: 1, price:-1});
+        // 3. Text index.
+        await db.collection("products").createIndex({desc:"text"})
+    }catch(err){
+        console.log(err);
+    }
+    console.log("Indexes are created");
 }
