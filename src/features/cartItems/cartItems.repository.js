@@ -1,5 +1,6 @@
 import { ObjectId } from "mongodb";
 import { getDB } from "../../config/mongodb.js";
+import { ApplicationError } from "../../error-handler/applicationError.js";
 
 
 export default class CartItemsRepository{
@@ -25,7 +26,8 @@ export default class CartItemsRepository{
         try{
         const db = getDB();
         const collection = db.collection(this.collection);
-
+        const updatedCounter = await this.getTheNextCounter(db);
+        const id=updatedCounter.value.value;
         // 1. Get the existing quantity for the user and product.
         // 2. Calculate the new quantity = existingQuantity+quantity
         // 3. Update the product.
@@ -34,6 +36,7 @@ export default class CartItemsRepository{
         await collection.updateOne(
             {productID: new ObjectId(productID), userID: new ObjectId(userID)},
             {
+                $setOnInsert:{_id:id},
                 $inc:{quantity: newQuantity}
             },
             {
@@ -61,5 +64,17 @@ export default class CartItemsRepository{
             console.log(err);
             throw new ApplicationError("Something went wrong with database", 500);   
         }
+    }
+
+    async getTheNextCounter(db){
+        const result = await db.collection("counters").findOneAndUpdate({
+            _id:'cartItemId'
+        },{
+            $inc:{value:1}
+        },{
+            returnDocument:'after'
+        });
+        console.log(result);
+        return result
     }
 }

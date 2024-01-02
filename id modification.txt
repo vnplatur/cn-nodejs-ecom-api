@@ -1,0 +1,6 @@
+
+How to use _id to work with a simple counter.
+
+1. Create new collection Counters({cartItemId, value}) 'cartItemId', 0
+2. While create the cartitem, we access the current counter, use it for _id.
+3. Update the counter.
