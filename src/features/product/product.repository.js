@@ -54,12 +54,17 @@ class ProductRepository{
             if(minPrice){
                 filterExpression.price = {$gte: parseFloat(minPrice)}
             }
-            if(maxPrice){
-                filterExpression.price = {...filterExpression.price, $lte: parseFloat(maxPrice)}
-            }
+            // if(maxPrice){
+            //     filterExpression.price = {...filterExpression.price, $lte: parseFloat(maxPrice)}
+            // }
             if(category){
-                filterExpression.category=category
+                // filterExpression.category=category
+                const categories = category.split(',');
+                filterExpression = {$or:[
+                    {category:{$in: categories}}
+                    , filterExpression]}
             }
+            console.log(filterExpression)
             return collection.find(filterExpression).toArray();
 
         }catch(err){
