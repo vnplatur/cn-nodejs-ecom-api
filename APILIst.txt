@@ -16,3 +16,52 @@ Signin - (Email, Password) - Done.
 {_id: Cat1, averagePrice: 30000},
 
 {_id: Cat2, averagePrice: 34000}
+
+1. Find average rating of a product.
+
+db.products.aggregate([
+    {
+        $unwind:"$ratings"
+    },
+    {
+        $group:{_id:"$name", averageRating: {$avg: "$ratings.rating"}}
+    }
+])
+
+{
+    id:'P1', averageRating: 4
+}
+
+// Find count of ratings for products.
+
+db.products.aggregate([
+    {
+        $project: {name:1, countOfRatings:{ $cond:{
+            if:{$isArray:"$ratings"}, 
+                then:{$size: "$ratings"}, else:0}
+        }}
+    }
+])
+
+// Find product with highest number of rating.
+
+
+db.products.aggregate([
+    {
+        $project: {name:1, countOfRatings:{ $cond:{
+            if:{$isArray:"$ratings"}, 
+                then:{$size: "$ratings"}, else:0}
+        }}
+    },
+        {
+            $sort:{countOfRatings: -1}
+        },
+        {
+            $limit:1
+        }
+])
+
+
+{
+    id:'P1', countOfRatings: 2
+}
