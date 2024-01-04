@@ -9,3 +9,7 @@
 5. Deduct the payment.
 6. Inform to sellers.
 7. Infor to courier.
+
+90000
+270000
+360000
