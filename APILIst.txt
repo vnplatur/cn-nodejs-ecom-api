@@ -11,3 +11,8 @@ Remove items from cart. - Done.
 UserController
 Signup - Email, Name, Password, TypeOfUser(customer, seller) - Done.
 Signin - (Email, Password) - Done.
+
+
+{_id: Cat1, averagePrice: 30000},
+
+{_id: Cat2, averagePrice: 34000}

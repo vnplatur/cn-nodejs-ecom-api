@@ -26,6 +26,14 @@ productRouter.get(
     productController.filterProducts(req, res)
 } 
 );
+
+productRouter.get(
+  '/averagePrice',
+  (req, res)=>{
+    productController.averageprice(req, res)
+} 
+);
+
 productRouter.get(
   '/',
   (req, res)=>{
