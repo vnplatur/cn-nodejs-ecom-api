@@ -1,0 +1,11 @@
+
+// Place Order.
+
+1. Get the cart items, calcuate the tota amount
+2. Create a record for order.
+3. Reduce the product stock.
+4. Clear the cart items.
+
+5. Deduct the payment.
+6. Inform to sellers.
+7. Infor to courier.
