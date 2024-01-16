@@ -64,4 +64,17 @@ return res.status(200).send(token);
       return res.status(200).send("Something went wrong");
     }
   }
+
+  async resetPassword(req, res, next){
+    const {newPassword} = req.body;
+    const userID = req.userID;
+    const hashedPassword = await bcrypt.hash(newPassword, 12);
+    try{
+      await this.userRepository.resetPassword(userID, hashedPassword);
+      res.status(200).send("Password is reset");
+    }catch(err){
+      console.log(err);
+      return res.status(200).send("Something went wrong");
+    }
+  }
 }
