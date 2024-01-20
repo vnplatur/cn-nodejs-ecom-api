@@ -19,6 +19,8 @@ class ProductRepository{
     async add(productData){
         try{
             // 1. Add the product.
+            productData.categories=productData.category.split(',').map(e=> e.trim());
+            console.log(productData);
             const newProduct = new ProductModel(productData);
             const savedProduct = await newProduct.save();
 
